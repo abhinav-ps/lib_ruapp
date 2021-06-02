@@ -1,0 +1,35 @@
+<software-inventory xmlns="urn:o-ran:software-management:1.0">
+<software-slot>
+	<name>factory</name>
+	<status>VALID</status>
+	<active>true</active>
+	<running>true</running>
+	<access>READ_WRITE</access>
+	<vendor-code>MV</vendor-code>
+	<build-id>1</build-id>
+	<build-name>release-ga</build-name>
+	<build-version>1.1.1.1</build-version>
+</software-slot>
+<software-slot>
+	<name>primary</name>
+	<status>VALID</status>
+	<active>false</active>
+	<running>false</running>
+	<access>READ_WRITE</access>
+	<vendor-code>MV</vendor-code>
+	<build-id>1</build-id>
+	<build-name>GA</build-name>
+	<build-version>1.1.1.1</build-version>
+</software-slot>
+<software-slot>
+	<name>secondary</name>
+	<status>VALID</status>
+	<active>false</active>
+	<running>false</running>
+	<access>READ_WRITE</access>
+	<vendor-code>MV</vendor-code>
+	<build-id>1</build-id>
+	<build-name>GA</build-name>
+	<build-version>1.1.1.1</build-version>
+</software-slot>
+</software-inventory>

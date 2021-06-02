@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <software-inventory xmlns="urn:o-ran:software-management:1.0">
+    <software-slot>
+      <name/>
+      <status/>
+      <active/>
+      <running/>
+      <access>READ_WRITE</access>
+      <product-code/>
+      <vendor-code/>
+      <build-id/>
+      <build-name/>
+      <build-version/>
+      <files>
+        <name/>
+        <version/>
+        <local-path/>
+        <integrity/>
+      </files>
+    </software-slot>
+    <software-slot>
+      <name/>
+      <status/>
+      <active/>
+      <running/>
+      <access>READ_WRITE</access>
+      <product-code/>
+      <vendor-code/>
+      <build-id/>
+      <build-name/>
+      <build-version/>
+      <files>
+        <name/>
+        <version/>
+        <local-path/>
+        <integrity/>
+      </files>
+    </software-slot>
+  </software-inventory>
+</data>

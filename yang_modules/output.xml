@@ -1,0 +1,16 @@
+<hardware xmlns="urn:ietf:params:xml:ns:yang:ietf-hardware"
+	  xmlns:oran="urn:o-ran:hardware:1.0" >
+    <component>
+	    <name>MyDevice</name>
+	    <class>MyClass</class>
+	    <physical-index>MyIdx</physical-index>
+	    <parent>MyP</parent>
+	    <parent-rel-pos>Rel-P</parent-rel-pos>
+	    <hardware-rev>0x.0x.0x</hardware-rev>
+	    <firmware-rev>0y.0y.0y</firmware-rev>
+	    <software-rev>0z.0z</software-rev>
+	    <serial-num>500450001</serial-num>
+	    <model-name>ACJ001CQ</model-name>
+	    <oran:product-code>PR02CX</oran:product-code>
+    </component>
+  </hardware>

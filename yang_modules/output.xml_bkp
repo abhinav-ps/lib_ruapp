@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <hardware xmlns="urn:ietf:params:xml:ns:yang:ietf-hardware">
+    <last-change/>
+    <component>
+      <name/>
+      <class/>
+      <physical-index/>
+      <description/>
+      <parent/>
+      <parent-rel-pos/>
+      <contains-child>
+        <!-- # entries: 0.. -->
+      </contains-child>
+      <hardware-rev/>
+      <firmware-rev/>
+      <software-rev/>
+      <serial-num/>
+      <mfg-name/>
+      <model-name/>
+      <alias/>
+      <asset-id/>
+      <is-fru/>
+      <mfg-date/>
+      <uri>
+        <!-- # entries: 0.. -->
+      </uri>
+      <uuid/>
+      <state>
+        <state-last-changed/>
+        <admin-state/>
+        <oper-state/>
+        <usage-state/>
+        <alarm-state/>
+        <standby-state/>
+      </state>
+      <sensor-data>
+        <value/>
+        <value-type/>
+        <value-scale/>
+        <value-precision/>
+        <oper-status/>
+        <units-display/>
+        <value-timestamp/>
+        <value-update-rate/>
+      </sensor-data>
+    </component>
+  </hardware>
+</data>
