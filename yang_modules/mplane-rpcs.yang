@@ -1,0 +1,36 @@
+module mplane-rpcs {
+    yang-version 1.1;
+    namespace "urn:m-plane:rpcs:1.0";
+    prefix "mplane-rpcs";
+
+    revision 2021-06-14 {
+        description "Initial revision.";
+    }
+
+    rpc start-mpra {
+        input {
+            leaf status {
+                type string;
+            }
+        }
+        output {
+            leaf status {
+                type string;
+            }
+            leaf error-message {
+                type string;
+            }
+        }
+    }
+
+    rpc stop-mpra {
+        output {
+            leaf msg {
+                type string;
+            }
+            leaf ret {
+                type string;
+            }
+        }
+    }
+}

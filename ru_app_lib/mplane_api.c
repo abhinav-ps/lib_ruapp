@@ -52,3 +52,11 @@ file_download(ru_file_mgmt_in_t *in,
     return 0;
 }
 
+int
+start_ruapp(mpane_switch_in_t *in,
+            mplane_switch_out_t **out)
+{
+    printf("Command Type: %d\n", in->type);
+    printf("Status: %s\n", in->mplane_start_in.status);
+    return 0;
+}

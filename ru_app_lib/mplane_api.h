@@ -6,7 +6,8 @@ enum software_pkg_opcode {
     INSTALL_PKG,
     ACTIVATE_PKG,
 
-    FILE_MGMT_UPLOAD
+    FILE_MGMT_UPLOAD,
+    START
 };
 
 typedef struct download_input {
@@ -108,6 +109,29 @@ typedef struct ru_file_mgmt_out{
 } ru_file_mgmt_out_t;
 
 
+typedef struct mplane_start_input {
+    char *status;
+} mplane_start_input_t;
+
+typedef struct mplane_start_output {
+   char *status;
+   char *error_message;
+} mplane_start_output_t;
+
+typedef struct mplane_switch_in{
+    uint8_t type;
+    union {
+         mplane_start_input_t mplane_start_in;
+    };
+} mpane_switch_in_t;
+
+typedef struct mplane_switch_out{
+    uint8_t type;
+    union {
+         mplane_start_output_t mplane_start_out;
+    };
+} mplane_switch_out_t;
+
 extern int software_download(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);
 extern int software_install(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);
 extern int software_activate(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);
@@ -115,4 +139,5 @@ extern int reset();
 extern int file_upload(ru_file_mgmt_in_t *in, ru_file_mgmt_out_t **out);
 extern int retrieve_file_list(ru_file_mgmt_in_t *in, ru_file_mgmt_out_t **out);
 extern int file_download(ru_file_mgmt_in_t *in, ru_file_mgmt_out_t **out);
+extern int start_ruapp(mpane_switch_in_t *in, mplane_switch_out_t **out);
 

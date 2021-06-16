@@ -735,6 +735,52 @@ error:
     return -1;
 }
 
+int
+mplane_start_ruapp(sr_session_ctx_t *session,
+                   const char *path,
+                   const sr_val_t *input,
+                   const size_t input_cnt,
+                   sr_event_t event,
+                   uint32_t request_id,
+                   sr_val_t **output,
+                   size_t *output_cnt,
+                   void *private_data)
+{
+    int (*symbol_p)();
+    int rc = SR_ERR_OK;
+    mpane_switch_in_t in;
+    mplane_switch_out_t *out = NULL;
+
+    in.type = START;
+    in.mplane_start_in.status = input->data.string_val;
+
+    symbol_p = load_symbol("start_ruapp");
+    rc = (*symbol_p)(&in, &out);
+    if(rc != SR_ERR_OK)
+        goto error;
+
+    *output = malloc((sizeof **output)*2);
+    if(*output == NULL)
+    {
+        printf("malloc() failed\n");
+        goto error;
+    }
+    *output_cnt = 2;
+    (*output)[0].xpath = strdup("/mplane-rpcs:start-mpra/status");
+    (*output)[0].type = SR_STRING_T;
+    (*output)[0].dflt = 0;
+    (*output)[0].data.string_val = strdup("STARTED");
+
+    (*output)[1].xpath = strdup("/mplane-rpcs:start-mpra/error-message");
+    (*output)[1].type = SR_STRING_T;
+    (*output)[1].dflt = 0;
+    (*output)[1].data.string_val = strdup("NO Errro");
+
+    return SR_ERR_OK;
+
+error:
+    return -1;
+}
 
 int
 o_ran_lib_sub()
@@ -750,7 +796,8 @@ o_ran_lib_sub()
         "/o-ran-operations:reset",
         "/o-ran-file-management:file-upload",
         "/o-ran-file-management:retrieve-file-list",
-        "/o-ran-file-management:file-download"
+        "/o-ran-file-management:file-download",
+        "/mplane-rpcs:start-mpra"
     };
     int (*cbs[])() = {
             mplane_oran_software_download,
@@ -760,6 +807,7 @@ o_ran_lib_sub()
             mplane_oran_file_upload,
             mplane_oran_retrieve_file_list,
             mplane_oran_file_download,
+            mplane_start_ruapp,
             NULL
     };
 
