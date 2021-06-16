@@ -1,11 +1,11 @@
 GCC=gcc -g
 CFLAGS=-c -Wall -Werror
 SFLAG=-fpic
-INCLUDE=ru_app_lib/
+INCLUDE=lib/
 BINDIR=build/
 OBJDIR=build/
 LIBDIR=build/
-SRCDIR=ru_app_lib/
+SRCDIR=lib/
 APPDIR=app/
 APPOBJ=app/
 SRCEXT=c
@@ -25,27 +25,24 @@ OBJECTS_APP := $(patsubst $(APPDIR)%,$(APPOBJ)%,$(SOURCES_APP:.$(SRCEXT)=.$(OBJE
 
 all: $(BINDIR)libruapp.so $(BINDIR)ruapp
 $(BINDIR)libruapp.so: $(OBJECTS_LIB)
-	@echo "SRCS: $(SOURCES_APP)"
-	@echo "OBJS: $(OBJECTS_APP)"
-	@echo "Lnking all library object files"
+	@echo "\nCreating dynamic library"
 	$(GCC) $^ -shared -o $@
 	@echo "Done, created $@"    
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	@echo "Compiling $<"
+	@echo "\nCompiling $<"
 	$(GCC) $(CFLAGS) $(SFLAG) -I$(INCLUDE)  $<  -o $@
 	@echo "Done"
 
 $(APPOBJ)%.o: $(APPDIR)%.c
-	@echo "Compiling $<"
+	@echo "\nCompiling $<"
 	$(GCC) $(CFLAGS) -I./$(APPOBJ)  $<  -o $@
 	@echo "Done"
 
 $(BINDIR)ruapp: $(OBJECTS_APP)
-	@echo "Creating ruapp"
-	@echo Link PATH: $(LD_LIBRARY_PATH)
+	@echo "\nCreating ruapp"
 	$(GCC)  $^ -o $@ $(SYSREPO_LFLAG) $(YANG_LFLAG) $(DL_LFLAG)
-	#$(GCC) -L$(LIBDIR) main.c -I$(INCLUDE) -o $@ -lruapp -ldl
+	@echo "Done"
 
 clean:
 	rm -rf $(BINDIR)*.o $(BINDIR)*.so $(BINDIR)ruapp $(APPOBJ)*.o

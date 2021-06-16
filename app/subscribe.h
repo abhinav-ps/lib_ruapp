@@ -1,9 +1,15 @@
+
+#ifndef __SUBSCRIBE__
+#define __SUBSCRIBE__
+
 #include <string.h>
-#include "sysrepo.h"
 #include <dlfcn.h>
+
+#include "sysrepo.h"
 
 #define MAX_MOD_NAME_LEN 128
 #define MAX_BUFF_SIZE 1024
+#define CHANGE_CANDICATE_CAP 5
 
 #define O_RAN_RPC_SUBSCR(xpath, cb) \
     rc = sr_rpc_subscribe(oran_srv.sr_sess, xpath, cb, NULL, 0, SR_SUBSCR_CTX_REUSE, &oran_srv.sr_rpc_sub); \
@@ -186,4 +192,6 @@ struct oran_srv {
 };
 
 extern struct oran_srv oran_srv;
+
+#endif
 
