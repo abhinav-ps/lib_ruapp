@@ -243,6 +243,33 @@ typedef struct mplane_switch_out{
     };
 } mplane_switch_out_t;
 
+
+typedef enum status_code {
+        SUCCESS = 0,
+        FAILURE = 1
+
+}status;
+
+
+typedef struct troubleshooting_status_grouping{
+
+        status grouping_status;
+        //status_code status ;
+        //enum status_code{ SUCCESS = 0, FAILURE  = 1};
+        char *failure_reason;
+
+}troubleshooting_logs_t;
+typedef struct start_troubleshooting_logs{
+                troubleshooting_logs_t  start_troubleshooting_logs_output ;
+
+}start_troubleshooting_logs_t;
+typedef struct stop_troubleshooting_logs{
+
+                 troubleshooting_logs_t  stop_troubleshooting_logs_output;
+
+}stop_troubleshooting_logs_t;
+
+
 extern int software_download(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);
 extern int software_install(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);
 extern int software_activate(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);
@@ -251,6 +278,8 @@ extern int file_upload(ru_file_mgmt_in_t *in, ru_file_mgmt_out_t **out);
 extern int retrieve_file_list(ru_file_mgmt_in_t *in, ru_file_mgmt_out_t **out);
 extern int file_download(ru_file_mgmt_in_t *in, ru_file_mgmt_out_t **out);
 extern int start_ruapp(mpane_switch_in_t *in, mplane_switch_out_t **out);
+extern int troubleshooting_start(start_troubleshooting_logs_t **out);
+extern int troubleshooting_stop(stop_troubleshooting_logs_t **out);
 
 #endif
 

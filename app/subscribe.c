@@ -695,7 +695,9 @@ o_ran_lib_sub()
         "/o-ran-file-management:file-upload",
         "/o-ran-file-management:retrieve-file-list",
         "/o-ran-file-management:file-download",
-        "/mplane-rpcs:start-mpra"
+        "/mplane-rpcs:start-mpra",
+	"/o-ran-troubleshooting:start-troubleshooting-logs",    /*Changes Here*/
+        "/o-ran-troubleshooting:stop-troubleshooting-logs"      /*Changes Here*/
     };
     int (*cbs[])() = {
             mplane_oran_software_download,
@@ -706,6 +708,8 @@ o_ran_lib_sub()
             mplane_oran_retrieve_file_list,
             mplane_oran_file_download,
             mplane_start_ruapp,
+	    mplane_oran_start_troubleshooting,                   /* Chages here */
+            mplane_oran_stop_troubleshooting,                   /* Changes here */
             NULL
     };
 
@@ -715,6 +719,35 @@ o_ran_lib_sub()
     } while(cbs[++i]);
     return 0;
 }
+int
+mplane_oran_start_troubleshooting(sr_session_ctx_t *session,
+                          const char *path,
+                          const sr_val_t *input,
+                          const size_t input_cnt,
+                          sr_event_t event,
+                          uint32_t request_id,
+                          sr_val_t **output,
+                          size_t *output_cnt,
+                          void *private_data)
+{
+    printf("*********** Mplane troubleshooting starting*********************************\n\n\n ");
+    return SR_ERR_OK;
+}
+
+int
+mplane_oran_stop_troubleshooting(sr_session_ctx_t *session,
+                          const char *path,
+                          const sr_val_t *input,
+                          const size_t input_cnt,
+                          sr_event_t event,
+                          uint32_t request_id,
+                          sr_val_t **output,
+                          size_t *output_cnt,
+                          void *private_data)
+{
+    printf("****** Mplane troubleshooting stopping*******/n ");
+}
+
 
 
 int

@@ -171,6 +171,31 @@ mplane_start_ruapp(sr_session_ctx_t *session,
                    size_t *output_cnt,
                    void *private_data);
 
+
+extern int
+mplane_oran_start_troubleshooting(sr_session_ctx_t *session,
+                              const char *path,
+                              const sr_val_t *input,
+                              const size_t input_cnt,
+                              sr_event_t event,
+                              uint32_t request_id,
+                              sr_val_t **output,
+                              size_t *output_cnt,
+                              void *private_data);
+
+
+extern int
+mplane_oran_stop_troubleshooting(sr_session_ctx_t *session,
+                              const char *path,
+                              const sr_val_t *input,
+                              const size_t input_cnt,
+                              sr_event_t event,
+                              uint32_t request_id,
+                              sr_val_t **output,
+                              size_t *output_cnt,
+                              void *private_data);
+
+
 extern int
 module_change_subscribe();
 
