@@ -746,6 +746,8 @@ mplane_oran_stop_troubleshooting(sr_session_ctx_t *session,
                           void *private_data)
 {
     printf("****** Mplane troubleshooting stopping*******/n ");
+    return SR_ERR_OK;
+		   
 }
 
 
