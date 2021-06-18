@@ -269,6 +269,32 @@ typedef struct stop_troubleshooting_logs{
 
 }stop_troubleshooting_logs_t;
 
+typedef struct passwordtype{
+        char *string;
+}passwordtype_t;
+
+
+typedef enum status_code_passwd {
+        SUCCESSFUL = 1,
+        FAILED = 2 
+
+}status_t;
+
+
+
+typedef struct chg_password_in{
+        passwordtype_t current_password;
+        passwordtype_t new_password;
+        passwordtype_t confirm_password;
+
+}chg_password_in_t;
+
+typedef struct chg_password_out{
+        status_t status;
+        char* failure_reason;
+
+}chg_password_out_t;
+extern int chg_password(chg_password_in_t *in , chg_password_out_t **out );
 
 extern int software_download(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);
 extern int software_install(ru_software_pkg_in_t *in, ru_software_pkg_out_t **out);

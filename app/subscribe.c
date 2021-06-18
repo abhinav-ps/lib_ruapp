@@ -697,7 +697,9 @@ o_ran_lib_sub()
         "/o-ran-file-management:file-download",
         "/mplane-rpcs:start-mpra",
 	"/o-ran-troubleshooting:start-troubleshooting-logs",    /*Changes Here*/
-        "/o-ran-troubleshooting:stop-troubleshooting-logs"      /*Changes Here*/
+        "/o-ran-troubleshooting:stop-troubleshooting-logs",      /*Changes Here*/
+	"/o-ran-usermgmt:chg-password"
+
     };
     int (*cbs[])() = {
             mplane_oran_software_download,
@@ -710,6 +712,7 @@ o_ran_lib_sub()
             mplane_start_ruapp,
 	    mplane_oran_start_troubleshooting,                   /* Chages here */
             mplane_oran_stop_troubleshooting,                   /* Changes here */
+	    mplane_oran_chg_password,
             NULL
     };
 
@@ -775,3 +778,20 @@ o_ran_lib_deinit_ctx()
     dlclose(handle);
     return 0;
 }
+int
+mplane_oran_chg_password(sr_session_ctx_t *session,
+                          const char *path,
+                          const sr_val_t *input,
+                          const size_t input_cnt,
+                          sr_event_t event,
+                          uint32_t request_id,
+                          sr_val_t **output,
+                          size_t *output_cnt,
+                          void *private_data)
+{
+
+
+    printf(" changing password  \n\nchanged\n\n\n");
+    return SR_ERR_OK;
+}
+
